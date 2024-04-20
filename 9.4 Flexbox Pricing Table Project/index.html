@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flexbox Pricing Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Sono', sans-serif;
+    }
+
+    /* Hint: What can you do with a media query and flexbox? */
+      .pricing-container{
+        display: flex;
+        gap: 1rem;
+       flex-direction: column;
+       height: 100%;
+       justify-content: center;
+       align-items: center;
+      }
+      .pricing-plan{
+        flex: 1;
+        max-width: 500px;
+        padding: 25px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .plan-title{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .plan-price{
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .plan-features li {
+      list-style: none;
+      width: 100%;
+      text-align: start;
+      margin-bottom: 10px;
+      }
+      .plan-button{
+        padding: 10px;
+        background-color: #00d5fff3;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+      }
+
+    @media (min-width:1200px) {
+      .pricing-container{
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+      }
+    } 
+
+  
+  </style>
+</head>
+
+<body>
+  <div class="pricing-container">
+    <div class="pricing-plan">
+      <div class="plan-title">Basic</div>
+      <div class="plan-price">Ksh.2500/month</div>
+      <ul class="plan-features">
+        <li>✅ 10Mbps</li>
+        <li>✅ 5 users</li>
+        <li>✅Internet,social media &amp; Email Support</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title">Standard</div>
+      <div class="plan-price">Ksh.3500/month</div>
+      <ul class="plan-features">
+        <li>✅ 20Mbps</li>
+        <li>✅ 10 Users</li>
+        <li>✅ HD TV shows and movies</li>
+        <li>✅ Internet,social media &amp; Email Support</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+    <div class="pricing-plan">
+      <div class="plan-title">Premium</div>
+      <div class="plan-price">Ksh.6000/month</div>
+      <ul class="plan-features">
+        <li>✅ 40Mbps</li>
+        <li>✅ Online gaming</li>
+        <li>✅ Multiple device streaming</li>
+        <li>✅ Superfast video downloads</li>
+      </ul>
+      <button class="plan-button">Sign Up</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
