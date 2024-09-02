@@ -1,0 +1,16 @@
+function fibonacciGenerator(n) {
+     var fibSequence = [];
+
+    if (n >= 1) fibSequence.push(0); // First number of the sequence
+    if (n >= 2) fibSequence.push(1); // Second number of the sequence
+
+    for (var i = 2; i < n; i++) {
+        // Each subsequent number is the sum of the previous two numbers
+        fibSequence.push(fibSequence[i - 1] + fibSequence[i - 2]);
+    }
+
+    return fibSequence;
+}
+var n = 2
+output = fibonacciGenerator(n);
+console.log(output)
