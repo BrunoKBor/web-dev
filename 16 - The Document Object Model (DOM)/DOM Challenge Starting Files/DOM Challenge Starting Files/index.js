@@ -1,1 +1,2 @@
-document.querySelect
+document.querySelect("h1");
+
