@@ -21,7 +21,7 @@ function nextSequence() {
     level++;    
 
     //update h1 with current level
-    $("#level-title").text("Level"+ level);
+    $("#level-title").text("Level "+ level);
 
     var randomNumber = Math.floor(Math.random() * 4);
     var randomChosenColour = buttonColors[randomNumber]
