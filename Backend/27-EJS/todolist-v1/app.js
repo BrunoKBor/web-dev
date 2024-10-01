@@ -2,56 +2,64 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname +"/date.js");
 
 const app = express();
 const port = 3000;
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public")); 
+
+const tasks = ["Play", "Code", "Learn"];
+const workTask = [];
+
 app.get("/", function(req, res) {
 
-    var today = new Date();
-    var day = "";
+    const day = date.getDate();
+    
+    res.render("lists", { 
+        listTitle: day,
+        newTask: tasks
+    });
+});
 
-    switch (today.getDay()) {  // Use getDay() 
-        case 0:
-            day = "Sunday";
-            break;
-        case 1:
-            day = "Monday";
-            break;
-        case 2:
-            day = "Tuesday";
-            break;
-        case 3:
-            day = "Wednesday";
-            break;
-        case 4:
-            day = "Thursday";
-            break;
-        case 5:
-            day = "Friday";
-            break;
-        case 6:
-            day = "Saturday";
-            break;    
-        default:
-            console.log("Error: current day is " + today.getDay());
-            break;
+app.post("/", function(req, res) {
+
+    console.log(req.body);
+    
+    const newTask = req.body.newTask;
+
+    if (req.body.list === "Work") {
+        workTask.push(newTask);
+        res.redirect("/work");
+    } else {
+        tasks.push(newTask);
+        res.redirect("/");
     }
 
-    // Get the date, month, and year
-    var currentDate = today.getDate();
-    var currentMonth = today.getMonth() + 1;  // Add 1 because months are 0-based
-    var currentYear = today.getFullYear();
+    
+});
 
-    // Format the full date string
-    var fullDate = day + ", " + currentDate + "/" + currentMonth + "/" + currentYear;
+app.get("/work", function(req, res) {
+    res.render("lists", {
+        listTitle: "Work list",
+        newTask:  workTask
+    });
+});
 
+app.post("/work", function(req, res) {
+    const newTask = req.body.newTask;
+    workTask.push(newTask);
+    res.redirect("/work");
+});
 
-    res.render("lists", { kindOfDay: fullDate});
+app.get("/about", function(req, res) {
+    res.render("about");
 });
 
 app.listen(port, function() {
     console.log(`Server started on port ${port}`);
+    
 });
