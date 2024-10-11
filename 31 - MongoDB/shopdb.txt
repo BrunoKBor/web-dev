@@ -1,0 +1,22 @@
+db.products.insertOne({
+    id: 2,
+    name: "pencil",
+    price: 10,
+    reviews: [
+        {
+            authorName: "John Doe",
+            rating: 5,
+            review: "Great pencil for writing!"
+        },
+        {
+            authorName: "Jane Smith",
+            rating: 4,
+            review: "Good quality, but a bit pricey."
+        },
+        {
+            authorName: "Bob Johnson",
+            rating: 3,
+            review: "Average pencil, nothing special."
+        }
+    ]
+})
