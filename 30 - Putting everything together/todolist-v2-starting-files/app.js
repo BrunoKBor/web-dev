@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/todolistDB')
+mongoose.connect('mongodb+srv://brunobor19:GPfepKc5tpCK2WaP@cluster0.tfxyp.mongodb.net/todolistDB')
     .then(() => {
         console.log('Successfully connected to MongoDB');
     })
@@ -40,9 +40,9 @@ const List = mongoose.model('List', listsSchema);
 
 // Default items to be inserted
 const itemsArray = [
-  new Item({ name: 'Buy food' }),
-  new Item({ name: 'Cook food' }),
-  new Item({ name: 'Eat food' })
+  new Item({ name: 'Welcome to your todo list' }),
+  new Item({ name: 'Hit the + button to add a new item' }),
+  new Item({ name: '<--Check box to delete' })
 ];
 
 // Insert default items if the collection is empty
@@ -102,7 +102,7 @@ app.post("/delete", async function (req, res) {
   try {
       if (listName === "Today") {
           // If item is from the default list (Today), remove it from Item collection
-          await Item.findByIdAndRemove(checkedItemId);
+          await Item.findByIdAndDelete(checkedItemId);
           res.redirect("/");
       } else {
           // If item is from a custom list, find the list and remove the item from its items array
